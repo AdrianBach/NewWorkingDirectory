@@ -126,7 +126,7 @@ mergeResults <- function(path, keyword = c("Results", "Snapshot"), pattern) {
       # create stats folder and save table
       newFolderDir <- paste(resFol, "/stats-", simFol[j], sep = "")
       dir.create(path = newFolderDir)
-      write.csv(tab, file = paste(newFolderDir, "/merged", keyword, "-", simFol[j], ".csv", sep = ""), row.names = FALSE)
+      write.csv(tab, file = paste(newFolderDir, "/merged", keyword, ".csv", sep = ""), row.names = FALSE)
       
     } # end loop over sim folders
     
@@ -540,7 +540,7 @@ alpha.intra.est <- function(path, keyword = c("Results", "Snapshot"), tburn) {
 
 # Path = "/home/adrian/Documents/GitKraken/Chapter2model/intraSpecComp/"
 # Path = "/Users/adrianbach/Desktop/PhD/GitKraken/Chapter2model/localSA/folder-localSA-ConvRate-over1/"
-Path = "C:/Users/adb3/Desktop/PhD/GitKraken/Chapter2model/doubleCatchProba/twoPreys/"
+Path = "C:/Users/adb3/Desktop/PhD/GitKraken/NewWorkingDirectory/doubleCatchProba/twoPreys/"
 Pattern = "doubleCatchProba-twoPreys-p"
 Keyword = "Results"
 
