@@ -93,8 +93,8 @@ make
 
 #### Simulation loop ####
 
-# ratioArray=($(seq 1 1 10))
-ratioArray=(2 4 6 8 10 14)
+ratioArray=($(seq 100 50 400))
+# ratioArray=(50 100 6 8 10 14)
 # spcfArray=(0 1 0)
 # oprtArray=(0 0 1) 
 
@@ -116,12 +116,12 @@ ratioArray=(2 4 6 8 10 14)
     # loop over prdCatchProb
     for ((k=0 ; k<${#ratioArray[@]} ; k++))
     do
-        prd_init_1=`echo "scale=0; ${ratioArray[$k]}*$prd_init_1" | bc`;
+        prd_init_1=${ratioArray[$k]}
 
-        echo "predators specific: $prd_spcf_1 ; predators oportunist: $prd_oprt_1 ; predator initial population: $(($prd_init_1*${ratioArray[$k]}))"
+        echo "predators specific: $prd_spcf_1 ; predators oportunist: $prd_oprt_1 ; predator initial population: $prd_init_1"
 
         # name the simulation with only the variables of interest and their value
-        sim_name="predInitTest-prdInitRatio${ratioArray[$k]}" # argv[1]
+        sim_name="predInitTest-prdInit${ratioArray[$k]}" # argv[1]
 
         #echo "prey populations initial density are $pry_init_1 and $pry_init_2 and predators $prd_init_1"
 
