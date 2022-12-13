@@ -98,30 +98,32 @@ make
 
 #### Simulation loop ####
 
-
 # sim values arrays
-prdCtchProbaArray=(0.1 0.25 0.5 1)
+ctchProbaArray=(0.1 0.25 0.5 1)
 convRateArray=(1 3 6 9)
-prdSatiArray=(1 3 6 9)
+satiArray=(1 3 6 9)
 
 # loop over prdCatchProb
-for ((k=0 ; k<${#prdCtchProbaArray[@]} ; k++))
+for ((k=0 ; k<${#ctchProbaArray[@]} ; k++))
 do
-    prd_ctch_1=${prdCtchProbaArray[$k]}
+    prd_ctch_pry1_1=`echo "scale=0; ${ctchProbaArray[$k]}*$prd_ctch_pry1_1" | bc`;
+    prd_ctch_pry2_1=$prd_ctch_pry1_1
 
     # loop over convRate
     for ((k=0 ; k<${#convRateArray[@]} ; k++))
     do
-        prd_cvrt_pry1_1=$((${convRateArray[$k]}*$prd_cvrt_pry1_1))  # argv[31] predator 1 prey1 resources/catch
+        prd_cvrt_pry1_1=`echo "scale=0; ${convRateArray[$k]}*$prd_cvrt_pry1_1" | bc`;  # argv[31] predator 1 prey1 resources/catch
         prd_cvrt_pry2_1=$prd_cvrt_pry1_1  # argv[32] predator 1 prey1 resources/catch
 
         # loop over prdSati
-        for ((k=0 ; k<${#prdCtchProbaArray[@]} ; k++))
+        for ((k=0 ; k<${#satiArray[@]} ; k++))
         do
-            prd_cons_1=$((${convRateArray[$k]}*$prd_cons_1))
+            prd_cons_1=`echo "scale=0; ${satiArray[$k]}*$prd_cons_1" | bc`
 
             # name the simulation with only the variables of interest and their value
-            sim_name="calibration-prdCtPr$prd_ctch_1-prdCvRt$prd_cvrt_pry1_1-prdSati$prd_cons_1" # argv[1]
+            sim_name="calibration-prdCtPr$prd_ctch_pry1_1-prdCvRt$prd_cvrt_pry1_1-prdSati$prd_cons_1" # argv[1]
+
+            echo "sim $sim_name"
         
             ## Create useful directories ##
 
