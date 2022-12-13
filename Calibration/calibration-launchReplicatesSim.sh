@@ -110,9 +110,9 @@ do
     prd_ctch_pry2_1=$prd_ctch_pry1_1
 
     # loop over convRate
-    for ((j=0 ; j<${#convRateArray[@]} ; j++))
+    for ((m=0 ; m<${#convRateArray[@]} ; m++))
     do
-        prd_cvrt_pry1_1=`echo "scale=0; ${convRateArray[$j]}*$prd_cvrt_pry1_1" | bc`;  # argv[31] predator 1 prey1 resources/catch
+        prd_cvrt_pry1_1=`echo "scale=0; ${convRateArray[$m]}*$prd_cvrt_pry1_1" | bc`;  # argv[31] predator 1 prey1 resources/catch
         prd_cvrt_pry2_1=$prd_cvrt_pry1_1  # argv[32] predator 1 prey1 resources/catch
 
         # loop over prdSati
