@@ -147,7 +147,7 @@ statsResults <- function(path, keyword = c("Results", "Snapshot"), pattern) {
   content <- grep(pattern = c("folder"), x = content, value = T)
   
   # loop over the local SA folders
-  for (i in 3:length(content)) {
+  for (i in 1:length(content)) {
     
     # path to folder
     folder = paste(path, content[i], sep = "")
@@ -541,8 +541,8 @@ alpha.intra.est <- function(path, keyword = c("Results", "Snapshot"), tburn) {
 
 # Path = "/home/adrian/Documents/GitKraken/NewWorkingDirectory/doubleCatchProba/onePrey/"
 # Path = "/Users/adrianbach/Desktop/PhD/GitKraken/Chapter2model/localSA/folder-localSA-ConvRate-over1/"
-Path = "C:/Users/adb3/Desktop/PhD/GitKraken/NewWorkingDirectory/TripleAvgOffspring/"
-Pattern = "doubleCatchProba-twoPreys-p"
+Path = "C:/Users/adb3/Desktop/PhD/GitKraken/NewWorkingDirectory/NewBaseLine/"
+Pattern = "test-N"
 Keyword = "Results"
 
 mergeResults(path = Path, keyword = Keyword, pattern = Pattern)
