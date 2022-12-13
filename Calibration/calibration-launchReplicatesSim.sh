@@ -112,13 +112,13 @@ do
     # loop over convRate
     for ((m=0 ; m<${#convRateArray[@]} ; m++))
     do
-        prd_cvrt_pry1_1=`echo "scale=0; ${convRateArray[$m]}*$prd_cvrt_pry1_1" | bc`;  # argv[31] predator 1 prey1 resources/catch
+        prd_cvrt_pry1_1=`expr ${convRateArray[$m]} \* $prd_cvrt_pry1_1`  # argv[31] predator 1 prey1 resources/catch
         prd_cvrt_pry2_1=$prd_cvrt_pry1_1  # argv[32] predator 1 prey1 resources/catch
 
         # loop over prdSati
         for ((k=0 ; k<${#satiArray[@]} ; k++))
         do
-            prd_cons_1=`echo "scale=0; ${satiArray[$k]}*$prd_cons_1" | bc`
+            prd_cons_1=`expr ${satiArray[$k]} \* $prd_cons_1`
 
             # name the simulation with only the variables of interest and their value
             sim_name="calibration-prdCtPr$prd_ctch_pry1_1-prdCvRt$prd_cvrt_pry1_1-prdSati$prd_cons_1" # argv[1]
