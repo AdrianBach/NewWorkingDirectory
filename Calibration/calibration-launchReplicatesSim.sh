@@ -77,7 +77,7 @@ pry_repr_2=$pry_surv_2; # argv[18] prey 2 resource units needed to pass reproduc
 prd_surv_1=$((3*$pry_surv_1)); # arg[25]
 divide=$((3*$prd_surv_1)); by=$freq_surv; prd_cons_1=`echo "scale=0; ($divide+$by-1)/$by" | bc`; # arg[24]
 prd_repr_1=$prd_surv_1; # echo "prd_repr_1 = $prd_repr_1" # argv[27] predator 1 resource units needed to pass reproduction trial. Defined as a proportion of what is needed to pass survival trial.
-prd_cvrt_pry1_1=$prd_cons_1  # argv[31] predator 1 prey1 resources/catch
+# prd_cvrt_pry1_1=$prd_cons_1  # argv[31] predator 1 prey1 resources/catch
 # ratio=1
 # prd_cvrt_pry2_1=$(($ratio*$prd_cvrt_pry1_1))  # argv[32] predator 1 prey1 resources/catch
 
@@ -100,8 +100,17 @@ make
 
 # sim values arrays
 ctchProbaArray=(0.1 0.25 0.5 1)
-convRateArray=(1 3 6 9)
-satiArray=(1 3 6 9)
+convRateArray=($((1*$prd_cvrt_pry1_1)) $((3*$prd_cvrt_pry1_1)) $((6*$prd_cvrt_pry1_1)) $((9*$prd_cvrt_pry1_1)))
+satiArray=($((1*$prd_cons_1)) $((3*$prd_cons_1)) $((6*$prd_cons_1)) $((9*$prd_cons_1)))
+
+echo "ctchProbaArray is ${ctchProbaArray[*]}"
+echo "ctchProbaArray size is ${#ctchProbaArray[@]}"
+
+echo "convRateArray is ${convRateArray[*]}"
+echo "convRateArray size is ${#convRateArray[@]}"
+
+echo "satiArray is ${satiArray[*]}"
+echo "satiArray size is ${#satiArray[@]}"
 
 # loop over prdCatchProb
 for ((i=0 ; i<${#ctchProbaArray[@]} ; i++))
@@ -112,13 +121,13 @@ do
     # loop over convRate
     for ((m=0 ; m<${#convRateArray[@]} ; m++))
     do
-        prd_cvrt_pry1_1=`expr ${convRateArray[$m]} \* $prd_cvrt_pry1_1`  # argv[31] predator 1 prey1 resources/catch
+        prd_cvrt_pry1_1=${convRateArray[$m]}  # argv[31] predator 1 prey1 resources/catch
         prd_cvrt_pry2_1=$prd_cvrt_pry1_1  # argv[32] predator 1 prey1 resources/catch
 
         # loop over prdSati
         for ((k=0 ; k<${#satiArray[@]} ; k++))
         do
-            prd_cons_1=`expr ${satiArray[$k]} \* $prd_cons_1`
+            prd_cons_1=${satiArray[$k]}
 
             # name the simulation with only the variables of interest and their value
             sim_name="calibration-prdCtPr$prd_ctch_pry1_1-prdCvRt$prd_cvrt_pry1_1-prdSati$prd_cons_1" # argv[1]
