@@ -47,8 +47,8 @@ prd_init_1=100    # argv[22] predator 1 initial density in nb of individuals
 prd_move_1=0.1  # argv[23] predator 1 max movement range in fraction of size
 prd_offs_1=1    # argv[26] predator 1 max number of offspring
 prd_intr_1=201    # argv[28] predator 1 time of introduction in the model
-prd_ctch_pry1_1=0.2  # argv[29] predator 1 prey1 catch probability
-prd_ctch_pry2_1=0.2  # argv[30] predator 1 prey2 catch probability
+# prd_ctch_pry1_1=0.2  # argv[29] predator 1 prey1 catch probability
+# prd_ctch_pry2_1=0.2  # argv[30] predator 1 prey2 catch probability
 prd_oprt_1=0    # argv[33] is predator oportunistic? (0 or 1)
 prd_spcf_1=0    # argv[34] is predator specific? (0 or 1)
 
@@ -104,15 +104,15 @@ convRateArray=(1 3 6 9)
 satiArray=(1 3 6 9)
 
 # loop over prdCatchProb
-for ((k=0 ; k<${#ctchProbaArray[@]} ; k++))
+for ((i=0 ; i<${#ctchProbaArray[@]} ; i++))
 do
-    prd_ctch_pry1_1=`echo "scale=0; ${ctchProbaArray[$k]}*$prd_ctch_pry1_1" | bc`;
+    prd_ctch_pry1_1=${ctchProbaArray[$i]}
     prd_ctch_pry2_1=$prd_ctch_pry1_1
 
     # loop over convRate
-    for ((k=0 ; k<${#convRateArray[@]} ; k++))
+    for ((j=0 ; j<${#convRateArray[@]} ; j++))
     do
-        prd_cvrt_pry1_1=`echo "scale=0; ${convRateArray[$k]}*$prd_cvrt_pry1_1" | bc`;  # argv[31] predator 1 prey1 resources/catch
+        prd_cvrt_pry1_1=`echo "scale=0; ${convRateArray[$j]}*$prd_cvrt_pry1_1" | bc`;  # argv[31] predator 1 prey1 resources/catch
         prd_cvrt_pry2_1=$prd_cvrt_pry1_1  # argv[32] predator 1 prey1 resources/catch
 
         # loop over prdSati
