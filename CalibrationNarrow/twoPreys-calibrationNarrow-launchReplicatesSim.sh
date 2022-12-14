@@ -104,6 +104,9 @@ ctchProbaArray=(0.1 0.2 0.3 0.4)
 convRateArray=(31 50 70 93)
 satiArray=(31 50 70 93)
 
+echo "prey1init is ${prey1init[*]}"
+echo "prey1init size is ${#prey1init[@]}"
+
 echo "ctchProbaArray is ${ctchProbaArray[*]}"
 echo "ctchProbaArray size is ${#ctchProbaArray[@]}"
 
@@ -136,7 +139,7 @@ do
                 prd_cons_1=${satiArray[$k]}
 
                 # name the simulation with only the variables of interest and their value
-                sim_name="calibrationNarrow-py1Init$pry_init_1-prdCtPr$prd_ctch_pry1_1-prdCvRt$prd_cvrt_pry1_1-prdSati$prd_cons_1" # argv[1]
+                sim_name="calibNrw-py1Init$pry_init_1-prdCtPr$prd_ctch_pry1_1-prdCvRt$prd_cvrt_pry1_1-prdSati$prd_cons_1" # argv[1]
 
                 echo "sim $sim_name"
             
@@ -203,7 +206,7 @@ do
                 p=$(($p+1))
                 printf "pry_repr_1 = $pry_repr_1 \t # argv[$p] prey 1 resource units needed to pass reproduction trial\n" >> paramFile.txt
                 p=$(($p+1))
-                printf "pry_repr_2 = $pry_repr_2 \t # argv[$p] prey 2 resource units needed to pass reproduction trial\n\n" >> paramFile.txt
+                printf "pry_repr_2 = $pry_repr_2 \t # argv[$p] prey 2 resource units needed to pass reproduction trial\n" >> paramFile.txt
                 p=$(($p+1))
                 printf "pry_intro_1 = $pry_intro_1 \t # argv[$p] prey 1 time step of introduction \n" >> paramFile.txt
                 p=$(($p+1))
