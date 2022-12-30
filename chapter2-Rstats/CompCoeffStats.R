@@ -70,8 +70,8 @@ mergeResults <- function(path, keyword = c("Results", "Snapshot"), pattern) {
     for (j in 1:length(simFol)) {
       
       # get results folder
-      resFol <- paste(folder, simFol[j], sep = "/")
-      # resFol <- paste(folder, simFol[j], sep = "")
+      # resFol <- paste(folder, simFol[j], sep = "/")
+      resFol <- paste(folder, simFol[j], sep = "")
       print(paste("in sim folder ", resFol))
       
       # get files
@@ -118,6 +118,10 @@ mergeResults <- function(path, keyword = c("Results", "Snapshot"), pattern) {
         res <- cbind(res, prey1growthRate, prey2growthRate, predatorGrowthRate)
         
         tab <- rbind(tab, res)
+        
+        # delete original file when finished
+        file.remove(paste(resFol, results[m], sep = "/"))
+        
       } # end loop over files (replicates)
       
       # name columns
@@ -176,8 +180,8 @@ statsResults <- function(path, keyword = c("Results", "Snapshot"), pattern) {
       # file.rename(paste(path, content[i], simFol[j], cux, sep = "/"), paste(path, content[i], "/", simFol[j], "/stats-", simFol[j], sep = ""))
       
       # path to folder
-      statsFol = paste(path, content[i], "/", simFol[j], "/stats-", simFol[j], sep = "")
-      # statsFol = paste(folder, simFol[j], "/stats", sep = "")
+      # statsFol = paste(path, content[i], "/", simFol[j], "/stats-", simFol[j], sep = "")
+      statsFol = paste(folder, simFol[j], "/stats", sep = "")
       # statsFol = paste(path, simFol[j], "/stats-", simFol[j], sep = "")
       
       # file.rename(paste(statsFol, results, sep = "/"), paste(statsFol, "/merged", keyword, "-", simFol[j], ".csv", sep = ""))
@@ -279,7 +283,7 @@ statsResults <- function(path, keyword = c("Results", "Snapshot"), pattern) {
       
     } # end loop over sim folders
     
-   } # end loop over local SA folders
+  } # end loop over local SA folders
   
 } # end of function
 
