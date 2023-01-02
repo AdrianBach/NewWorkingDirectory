@@ -543,10 +543,10 @@ alpha.intra.est <- function(path, keyword = c("Results", "Snapshot"), tburn) {
   }  
 }
 
-# Path = "/home/adrian/Documents/GitKraken/NewWorkingDirectory/doubleCatchProba/onePrey/"
+Path = "/home/adrian/Documents/GitKraken/NewWorkingDirectory/nullScenarioCalibration/"
 # Path = "/Users/adrianbach/Desktop/PhD/GitKraken/Chapter2model/localSA/folder-localSA-ConvRate-over1/"
-Path = "C:/Users/adb3/Desktop/PhD/GitKraken/NewWorkingDirectory/NewBaseLine/"
-Pattern = "test-N"
+# Path = "C:/Users/adb3/Desktop/PhD/GitKraken/NewWorkingDirectory/NewBaseLine/"
+Pattern = "nullCalib-p"
 Keyword = "Results"
 
 mergeResults(path = Path, keyword = Keyword, pattern = Pattern)

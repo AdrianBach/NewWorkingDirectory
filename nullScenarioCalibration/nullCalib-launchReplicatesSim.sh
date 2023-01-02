@@ -277,7 +277,7 @@ do
                     # echo "rand seed: $rand_seed" 
 
                     start=$(date +%s)
-                    # ./test-chapter2ibm.o $sim_name $size $res_nb $max_res_1 $max_res_2 $pry_nb $pry_init_1 $pry_init_2 $pry_move_1 $pry_move_2 $pry_cons_1 $pry_cons_2 $pry_surv_1 $pry_surv_2 $pry_offs_1 $pry_offs_2 $pry_repr_1 $pry_repr_2 $pry_intro_1 $pry_intro_2 $prd_nb $prd_init_1 $prd_move_1 $prd_cons_1 $prd_surv_1 $prd_offs_1 $prd_repr_1 $prd_intr_1 $prd_ctch_pry1_1 $prd_ctch_pry2_1 $prd_cvrt_pry1_1 $prd_cvrt_pry2_1 $prd_oprt_1 $prd_spcf_1 $simu_time $freq_repr $freq_surv $freq_rfll $freq_rslt $freq_snap $rand_seed
+                    ./test-chapter2ibm.o $sim_name $size $res_nb $max_res_1 $max_res_2 $pry_nb $pry_init_1 $pry_init_2 $pry_move_1 $pry_move_2 $pry_cons_1 $pry_cons_2 $pry_surv_1 $pry_surv_2 $pry_offs_1 $pry_offs_2 $pry_repr_1 $pry_repr_2 $pry_intro_1 $pry_intro_2 $prd_nb $prd_init_1 $prd_move_1 $prd_cons_1 $prd_surv_1 $prd_offs_1 $prd_repr_1 $prd_intr_1 $prd_ctch_pry1_1 $prd_ctch_pry2_1 $prd_cvrt_pry1_1 $prd_cvrt_pry2_1 $prd_oprt_1 $prd_spcf_1 $simu_time $freq_repr $freq_surv $freq_rfll $freq_rslt $freq_snap $rand_seed
                     end=$(date +%s)
 
                     time_s=$(($end-$start))
@@ -285,12 +285,12 @@ do
 
                     printf "$j \t $rand_seed \t\t\t $time_s \t\t $time_h \n" >> paramFile.txt
                     
-                    # mv $sim_name-ResultsTable.csv rep$j-ResultsTable.csv
-                    # mv $sim_name-SnapshotTable.csv rep$j-SnapshotTable.csv
+                    mv $sim_name-ResultsTable.csv rep$j-ResultsTable.csv
+                    mv $sim_name-SnapshotTable.csv rep$j-SnapshotTable.csv
                 done
 
                 # no need for the executable afterwards
-                # rm ./test-chapter2ibm.o
+                rm ./test-chapter2ibm.o
 
                 echo "All replicates done, moving back to the upper directory"
 
